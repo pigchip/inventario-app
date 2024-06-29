@@ -13,7 +13,7 @@ import { CategoriaDTO } from '../model/CategoriaDTO';
   providedIn: 'root'
 })
 export class ServiceService {
-  private baseUrl = 'http://localhost:8080';  // Cambia la URL según tu configuración
+  private baseUrl = 'https://inventario-baxy.onrender.com';
 
   constructor(private http: HttpClient) { }
 
