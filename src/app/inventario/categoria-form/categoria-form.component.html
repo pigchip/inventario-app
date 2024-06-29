@@ -1,0 +1,39 @@
+<div class="container mt-4">
+    <div class="card">
+      <div class="card-body">
+        <h1>Gestión de Categoría</h1>
+        <ul>
+          <li>Para crear una categoría, ingrese los datos y asegúrese de que el ID sea 0, luego presione el botón "Crear/Actualizar".</li>
+          <li>Para actualizar una categoría, ingrese el ID de la categoría y presione el botón "Cargar Datos". Después, actualice los datos y presione el botón "Crear/Actualizar".</li>
+          <li>Para eliminar una categoría, ingrese el ID de la categoría y presione el botón "Eliminar".</li>
+        </ul>
+        <div class="mb-3">
+          <label for="id" class="form-label">Id de la Categoría</label>
+          <input type="number" class="form-control" [(ngModel)]="categoria.idCategoria" id="id" name="id">
+          <div *ngIf="isIdCategoriaInvalid" class="text-danger">
+            El ID de la categoría no puede ser negativo
+          </div>
+        </div>
+        <div class="mb-3">
+          <button class="btn btn-primary me-2" (click)="cargarDatosCategoria()">Cargar Datos</button>
+          <button class="btn btn-danger" (click)="confirmDelete()">Eliminar</button>
+        </div>
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" [(ngModel)]="categoria.nombreCategoria" id="nombre" name="nombre" required>
+          <div *ngIf="isNombreCategoriaInvalid" class="text-danger">
+            El nombre de la categoría es requerido
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="descripcion" class="form-label">Descripción</label>
+          <input type="text" class="form-control" [(ngModel)]="categoria.descripcionCategoria" id="descripcion" name="descripcion">
+          <div *ngIf="isDescripcionCategoriaInvalid" class="text-danger">
+            La descripción de la categoría es requerida
+          </div>
+        </div>
+        <button class="btn btn-success" (click)="confirmSave()">Crear/Actualizar</button>
+      </div>
+    </div>
+  </div>
+  

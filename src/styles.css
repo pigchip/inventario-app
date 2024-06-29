@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+.table-custom {
+    background-color: #f8f9fa;
+  }
+  
+  .table-custom th, .table-custom td {
+    vertical-align: middle;
+    text-align: center;
+  }
+  
+  .table-custom th {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .table-custom tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .btn-custom {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-custom:hover {
+    background-color: #c82333;
+  }
+  
+  .btn-icon {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+  }
+  

@@ -1,0 +1,58 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <h1>Gestión de Movimiento</h1>
+      <ul>
+        <li>Para crear un movimiento, ingrese los datos y asegúrese de que el ID sea 0, luego presione el botón "Crear Movimiento".</li>
+        <li>Para actualizar un movimiento, ingrese el ID del movimiento y presione el botón "Cargar Datos". Después, actualice los datos y presione el botón "Crear Movimiento".</li>
+        <li>Para eliminar un movimiento, ingrese el ID del movimiento y presione el botón "Eliminar".</li>
+      </ul>
+      <form [formGroup]="movimientoForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="idMovimiento" class="form-label">ID de Movimiento</label>
+          <input type="number" class="form-control" formControlName="idMovimiento" id="idMovimiento">
+          <div *ngIf="movimientoForm.get('idMovimiento')?.touched && movimientoForm.get('idMovimiento')?.invalid" class="text-danger">
+            <div *ngIf="movimientoForm.get('idMovimiento')?.errors?.['required']">ID de Movimiento es requerido</div>
+            <div *ngIf="movimientoForm.get('idMovimiento')?.errors?.['min']">ID de Movimiento debe ser mayor o igual a 0</div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <button class="btn btn-primary me-2" (click)="cargarDatosMovimiento()">Cargar Datos</button>
+          <button class="btn btn-danger" (click)="confirmDelete()">Eliminar</button>
+        </div>
+        <div class="mb-3">
+          <label for="tipoMovimiento" class="form-label">Tipo de Movimiento (E/S)</label>
+          <input type="text" class="form-control" formControlName="tipoMovimiento" id="tipoMovimiento" required>
+          <div *ngIf="movimientoForm.get('tipoMovimiento')?.touched && movimientoForm.get('tipoMovimiento')?.invalid" class="text-danger">
+            <div *ngIf="movimientoForm.get('tipoMovimiento')?.errors?.['required']">Tipo de Movimiento es requerido</div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="fechaMovimiento" class="form-label">Fecha de Movimiento</label>
+          <input type="date" class="form-control" formControlName="fechaMovimiento" id="fechaMovimiento" required>
+          <div *ngIf="movimientoForm.get('fechaMovimiento')?.touched && movimientoForm.get('fechaMovimiento')?.invalid" class="text-danger">
+            <div *ngIf="movimientoForm.get('fechaMovimiento')?.errors?.['required']">Fecha de Movimiento es requerida</div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="cantidad" class="form-label">Cantidad</label>
+          <input type="number" class="form-control" formControlName="cantidad" id="cantidad" required>
+          <div *ngIf="movimientoForm.get('cantidad')?.touched && movimientoForm.get('cantidad')?.invalid" class="text-danger">
+            <div *ngIf="movimientoForm.get('cantidad')?.errors?.['required']">Cantidad es requerida</div>
+            <div *ngIf="movimientoForm.get('cantidad')?.errors?.['min']">Cantidad debe ser mayor o igual a 1</div>
+          </div>
+        </div>
+        <div class="mb-3" formGroupName="producto">
+          <label for="idProducto" class="form-label">ID del Producto</label>
+          <select class="form-select" formControlName="idProducto" id="idProducto" required>
+            <option *ngFor="let producto of productos" [value]="producto.idProducto">{{ producto.nombreProducto }}</option>
+          </select>
+          <div *ngIf="movimientoForm.get('producto.idProducto')?.touched && movimientoForm.get('producto.idProducto')?.invalid" class="text-danger">
+            <div *ngIf="movimientoForm.get('producto.idProducto')?.errors?.['required']">ID del Producto es requerido</div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success">Crear Movimiento</button>
+      </form>
+    </div>
+  </div>
+</div>

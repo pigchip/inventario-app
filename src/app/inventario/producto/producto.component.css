@@ -1,0 +1,34 @@
+.container {
+    margin-top: 20px;
+  }
+  
+  .table-custom {
+    width: 100%;
+  }
+  
+  .table th {
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  
+  .btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+  }
+  
+  .pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .pagination-container .form-select {
+    width: auto;
+    margin-left: 10px;
+  }
+  

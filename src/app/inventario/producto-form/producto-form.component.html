@@ -1,0 +1,61 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <h1>Gestión de Producto</h1>
+      <ul>
+        <li>Para crear un producto, ingrese los datos y asegúrese de que el ID sea 0, luego presione el botón "Crear/Actualizar".</li>
+        <li>Para actualizar un producto, ingrese el ID del producto y presione el botón "Cargar Datos". Después, actualice los datos y presione el botón "Crear/Actualizar".</li>
+        <li>Para eliminar un producto, ingrese el ID del producto y presione el botón "Eliminar".</li>
+      </ul>
+      <div class="mb-3">
+        <label for="id" class="form-label">Id del Producto</label>
+        <input type="number" class="form-control" [(ngModel)]="producto.idProducto" id="id" name="id">
+        <div *ngIf="isIdProductoInvalid" class="text-danger">
+          El ID del producto no puede ser negativo
+        </div>
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-primary me-2" (click)="cargarDatosProducto()">Cargar Datos</button>
+        <button class="btn btn-danger" (click)="confirmDelete()">Eliminar</button>
+      </div>
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" [(ngModel)]="producto.nombreProducto" id="nombre" name="nombre" required>
+        <div *ngIf="isNombreProductoInvalid" class="text-danger">
+          El nombre del producto es requerido
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="descripcion" class="form-label">Descripción</label>
+        <input type="text" class="form-control" [(ngModel)]="producto.descripcionProducto" id="descripcion" name="descripcion">
+        <div *ngIf="isDescripcionProductoInvalid" class="text-danger">
+          La descripción del producto es requerida
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="precio" class="form-label">Precio</label>
+        <input type="number" class="form-control" [(ngModel)]="producto.precio" id="precio" name="precio">
+        <div *ngIf="isPrecioInvalid" class="text-danger">
+          El precio debe ser un número entero positivo
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="existencia" class="form-label">Existencia</label>
+        <input type="number" class="form-control" [(ngModel)]="producto.existencia" id="existencia" name="existencia">
+        <div *ngIf="isExistenciaInvalid" class="text-danger">
+          La existencia debe ser un número entero positivo
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="categoria" class="form-label">Categoría</label>
+        <select class="form-select" [(ngModel)]="producto.idCategoria.idCategoria" id="categoria" name="categoria">
+          <option *ngFor="let categoria of categorias" [value]="categoria.idCategoria">{{ categoria.nombreCategoria }}</option>
+        </select>
+        <div *ngIf="isCategoriaInvalid" class="text-danger">
+          La categoría es requerida
+        </div>
+      </div>
+      <button class="btn btn-success" (click)="confirmSave()">Crear/Actualizar</button>
+    </div>
+  </div>
+</div>
